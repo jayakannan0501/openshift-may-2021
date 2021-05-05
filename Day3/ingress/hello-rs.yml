@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: hello
+  name: hello-rs
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - image: tektutor/hello-ms:3.0
+        imagePullPolicy: IfNotPresent
+        name: hello-ms
